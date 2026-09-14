@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<!-- skill:chrome -->
+<style>
+/* Credit line — bottom-right */
+.design-ui-credit {
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  font: 11px/1 system-ui, sans-serif;
+  color: rgba(128,128,128,0.5);
+  pointer-events: none;
+  z-index: 2147483647;
+  transition: opacity 0.4s ease;
+  user-select: none;
+  letter-spacing: 0.02em;
+}
+
+/* Hide chrome on touch devices */
+@media (hover: none) {
+  .design-ui-credit { display: none; }
+}
+
+/* Print fixes */
+@media print {
+  * {
+    transition: none !important;
+    animation: none !important;
+    box-shadow: none !important;
+  }
+  body {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .design-ui-credit { display: none !important; }
+}
+
+</style>
+<script>
+(function () {
+    // Design-ui pages are single compositions, so the whole body is editable.
+    function markEditable() {
+        document.body.classList.add('artifact-editable');
+    }
+
+    // Credit badge with idle-fade. Hover devices only.
+    function initChromeUI() {
+        if (!matchMedia('(hover: hover)').matches) return;
+
+        var credit = document.createElement('div');
+        credit.className = 'design-ui-credit';
+        credit.setAttribute('aria-hidden', 'true');
+        credit.innerHTML = '\u{1F49C} by ClickUp Brain';
+        document.body.appendChild(credit);
+
+        var timer = null;
+        var fade = function (out) { credit.style.opacity = out ? '0' : ''; };
+        fade(true);
+        var show = function () {
+            fade(false);
+            clearTimeout(timer);
+            timer = setTimeout(function () { fade(true); }, 3000);
+        };
+        document.addEventListener('mousemove', show);
+        show();
+    }
+
+    function init() {
+        markEditable();
+        initChromeUI();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+
+</script>
+<!-- /skill:chrome -->
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#8b2635">
+<title>ثبّت تطبيق أرضنا | Install Arduna</title>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:oklch(95% .022 72);--ink:oklch(24% .025 55);--muted:oklch(45% .025 65);--red:oklch(48% .2 25);--green:oklch(42% .13 145);--brown:oklch(38% .08 55);--gold:oklch(63% .13 72);--line:oklch(83% .035 72)}
+*{box-sizing:border-box;margin:0}
+body{background:var(--paper);color:var(--ink);font-family:Tajawal,sans-serif;line-height:1.7;min-height:100vh;padding:0}
+h1,h2,h3{font-family:Amiri,serif}
+
+.top-bar{background:var(--red);padding:14px 24px;text-align:center}
+.top-bar a{color:white;text-decoration:none;font-size:.9rem;opacity:.85}
+.top-bar a:hover{opacity:1}
+
+.hero-section{text-align:center;padding:60px 24px 40px;background:linear-gradient(to bottom,oklch(91% .03 72),var(--paper))}
+.hero-section h1{font-size:clamp(2rem,5vw,3.2rem);color:var(--ink);margin-bottom:8px}
+.hero-section p{color:var(--muted);font-size:1.05rem;max-width:50ch;margin:0 auto}
+.logo-small{width:80px;height:80px;object-fit:contain;margin-bottom:16px;filter:drop-shadow(0 6px 12px oklch(35% .08 60 / .2))}
+
+.tabs-row{display:flex;justify-content:center;gap:0;margin:36px auto 0;max-width:400px;border-radius:999px;overflow:hidden;border:2px solid var(--red)}
+.tab-btn{flex:1;border:0;background:transparent;padding:14px 20px;font-family:Tajawal,sans-serif;font-size:1rem;font-weight:700;color:var(--red);cursor:pointer;transition:.2s}
+.tab-btn.active{background:var(--red);color:white}
+
+.content{max-width:580px;margin:0 auto;padding:40px 24px 80px}
+
+.panel{display:none}
+.panel.active{display:block}
+
+.step{display:flex;gap:18px;align-items:flex-start;margin-bottom:36px;position:relative}
+.step-num{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:1.1rem;color:white;flex:none}
+.step:nth-child(1) .step-num{background:var(--red)}
+.step:nth-child(2) .step-num{background:var(--green)}
+.step:nth-child(3) .step-num{background:var(--gold);color:var(--ink)}
+.step:nth-child(4) .step-num{background:var(--brown)}
+
+.step-body h3{font-family:Tajawal,sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:4px}
+.step-body p{color:var(--muted);font-size:.92rem}
+
+.step-visual{margin-top:12px;background:oklch(98% .012 72);border:1px solid var(--line);border-radius:16px;padding:20px;display:flex;align-items:center;justify-content:center;gap:12px;font-size:1.4rem}
+.step-visual .icon-demo{font-size:2.2rem}
+.step-visual .label{font-size:.85rem;color:var(--muted);font-weight:500}
+.step-visual .arrow{color:var(--red);font-size:1.2rem}
+
+.mockup{background:oklch(18% .02 55);border-radius:28px;padding:12px;max-width:220px;margin:20px auto 0;box-shadow:0 16px 40px oklch(20% .03 55 / .25)}
+.mockup-screen{background:var(--paper);border-radius:18px;padding:24px 16px;text-align:center;min-height:180px;display:grid;place-items:center}
+.mockup-screen .app-icon{width:56px;height:56px;border-radius:14px;object-fit:contain;background:white;padding:4px;box-shadow:0 3px 8px oklch(30% .03 55 / .12)}
+.mockup-screen .app-name{margin-top:8px;font-size:.8rem;font-weight:700;color:var(--ink)}
+.mockup-notch{width:80px;height:6px;background:oklch(30% .02 55);border-radius:4px;margin:0 auto 8px}
+
+.done-box{background:oklch(42% .13 145 / .08);border:1px solid oklch(42% .13 145 / .25);border-radius:16px;padding:24px;text-align:center;margin-top:12px}
+.done-box p{color:var(--green);font-weight:700;font-size:1rem}
+.done-box span{font-size:2rem;display:block;margin-bottom:8px}
+
+.tip{background:oklch(63% .13 72 / .1);border:1px solid oklch(63% .13 72 / .25);border-radius:12px;padding:16px 20px;margin-top:40px;display:flex;gap:12px;align-items:flex-start}
+.tip span{font-size:1.3rem;flex:none}
+.tip p{font-size:.88rem;color:var(--muted)}
+
+.footer-mini{text-align:center;padding:24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);margin-top:60px}
+</style>
+</head>
+<body>
+
+<div class="top-bar"><a href="#">← ارجع لموقع أرضنا</a></div>
+
+<div class="hero-section">
+<img class="logo-small" src="https://i.ibb.co/bMTtXQMF/JERICHO-GATE-20260805-221447-0000.png" alt="أرضنا">
+<h1>ثبّت تطبيق أرضنا</h1>
+<p>ببلاش وبدون تحميل من المتجر. خطوتين بس وبصير عندك التطبيق على شاشتك الرئيسية.</p>
+</div>
+
+<div class="tabs-row">
+<button class="tab-btn active" data-tab="iphone">iPhone</button>
+<button class="tab-btn" data-tab="android">Android</button>
+</div>
+
+<div class="content">
+
+<!-- iPhone Panel -->
+<div class="panel active" id="panel-iphone">
+
+<div class="step">
+<div class="step-num">١</div>
+<div class="step-body">
+<h3>افتح الموقع من Safari</h3>
+<p>مهم يكون من متصفح Safari مش Chrome. افتح رابط أرضنا.</p>
+<div class="step-visual">
+<div class="icon-demo">🧭</div>
+<div class="label">Safari فقط</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٢</div>
+<div class="step-body">
+<h3>اضغط على أيقونة المشاركة</h3>
+<p>المربع اللي فيه سهم طالع لفوق (⬆) بأسفل الشاشة.</p>
+<div class="step-visual">
+<div class="icon-demo">⬆️</div>
+<div class="arrow">←</div>
+<div class="label">أيقونة المشاركة بالأسفل</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٣</div>
+<div class="step-body">
+<h3>اختار "Add to Home Screen"</h3>
+<p>انزل بالقائمة لتحت وبتلاقي خيار "إضافة إلى الشاشة الرئيسية" أو "Add to Home Screen".</p>
+<div class="step-visual">
+<div class="icon-demo">➕</div>
+<div class="label">Add to Home Screen</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٤</div>
+<div class="step-body">
+<h3>اضغط "إضافة"</h3>
+<p>خلّي الاسم "أرضنا" واضغط Add.</p>
+<div class="mockup">
+<div class="mockup-notch"></div>
+<div class="mockup-screen">
+<img class="app-icon" src="https://i.ibb.co/bMTtXQMF/JERICHO-GATE-20260805-221447-0000.png" alt="أرضنا">
+<div class="app-name">أرضنا</div>
+</div>
+</div>
+<div class="done-box">
+<span>✅</span>
+<p>مبروك! التطبيق صار على شاشتك</p>
+</div>
+</div>
+</div>
+
+<div class="tip">
+<span>💡</span>
+<p>التطبيق بيفتح بشاشة كاملة بدون شريط المتصفح، وبتقدر تطلب مباشرة منه.</p>
+</div>
+
+</div>
+
+<!-- Android Panel -->
+<div class="panel" id="panel-android">
+
+<div class="step">
+<div class="step-num">١</div>
+<div class="step-body">
+<h3>افتح الموقع من Chrome</h3>
+<p>افتح رابط أرضنا من متصفح Google Chrome.</p>
+<div class="step-visual">
+<div class="icon-demo">🌐</div>
+<div class="label">Chrome</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٢</div>
+<div class="step-body">
+<h3>اضغط على القائمة (⋮)</h3>
+<p>النقط الثلاث بأعلى يمين الشاشة.</p>
+<div class="step-visual">
+<div class="icon-demo">⋮</div>
+<div class="arrow">←</div>
+<div class="label">قائمة Chrome بالأعلى</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٣</div>
+<div class="step-body">
+<h3>اختار "Install app" أو "تثبيت التطبيق"</h3>
+<p>أو ممكن يطلعلك إشعار تلقائي "Add Arduna to Home screen"، اضغط عليه مباشرة.</p>
+<div class="step-visual">
+<div class="icon-demo">📲</div>
+<div class="label">Install app</div>
+</div>
+</div>
+</div>
+
+<div class="step">
+<div class="step-num">٤</div>
+<div class="step-body">
+<h3>اضغط "Install"</h3>
+<p>التطبيق بينزل فوراً على الشاشة الرئيسية.</p>
+<div class="mockup">
+<div class="mockup-notch"></div>
+<div class="mockup-screen">
+<img class="app-icon" src="https://i.ibb.co/bMTtXQMF/JERICHO-GATE-20260805-221447-0000.png" alt="أرضنا">
+<div class="app-name">أرضنا</div>
+</div>
+</div>
+<div class="done-box">
+<span>✅</span>
+<p>مبروك! التطبيق صار على شاشتك</p>
+</div>
+</div>
+</div>
+
+<div class="tip">
+<span>💡</span>
+<p>على أندرويد ممكن يطلعلك إشعار تلقائي أول ما تفتح الموقع يعرض عليك تنزيل التطبيق.</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-mini">أرضنا | Arduna 🇵🇸 ضيافة فلسطينية أصيلة في أريحا</div>
+
+<script>
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.onclick = () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+  };
+});
+</script>
+</body>
+</html>

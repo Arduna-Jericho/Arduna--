@@ -1,0 +1,14 @@
+{
+  "name": "أرضنا | Arduna",
+  "short_name": "أرضنا",
+  "start_url": "https://arduna-jericho.github.io/Arduna--/",
+  "scope": "https://arduna-jericho.github.io/Arduna--/",
+  "display": "standalone",
+  "background_color": "#f4eadb",
+  "theme_color": "#8b2635",
+  "description": "ضيافة فلسطينية أصيلة في أريحا",
+  "icons": [
+    { "src": "https://i.ibb.co/bMTtXQMF/JERICHO-GATE-20260805-221447-0000.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "https://i.ibb.co/bMTtXQMF/JERICHO-GATE-20260805-221447-0000.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}
